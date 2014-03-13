@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Forum</title>
+		<%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+		<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+		<%= csrf_meta_tags %>
+	</head>
+	<body>
+			<div class="container-fluid">
+				<div class="row"> <!-- bg-primary"> -->
+					<div class="col-md-3">
+						<img src="" />
+					</div>
+					<div class="col-md-4">
+						<h2>A better forum</h2>
+					</div>
+					<div class="col-md-5">
+						<!-- if user is not logged in -->
+						<div class="pull-right">
+							<input type="email" class="" id="login-username" placeholder="Email" >
+							<input type="password" class="password" id="login-password" placeholder="Password">
+							<button type="button" class="login-link btn btn-primary">Log in</button> or 
+							<button type="button" class="signup-link btn btn-link">Sign up</button> 
+						</div>
+
+						<!-- else
+							Welcome, user
+							<button type="button" class="signout-link btn btn-link">Sign out</button>
+						-->
+					</div>
+				</div>
+			</div>
+
+		<!-- Log in modal -->
+		<div class="login-modal hidden modal">
+			<link class="button btn btn-info" id="login-button">
+		</div>
+
+		<!-- Sign up modal -->
+		<div class="signup-modal hidden modal">
+
+		</div>
+
+		<%= yield %>
+
+	</body>
+</html>

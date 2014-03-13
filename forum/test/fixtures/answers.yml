@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  source_question_id: 
+  destination_question_id: 
+  label: MyString
+  user_id: 
+
+two:
+  source_question_id: 
+  destination_question_id: 
+  label: MyString
+  user_id: 

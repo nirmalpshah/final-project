@@ -59,18 +59,29 @@ $(function() {
 
 	$(document.body).on("click", ".response-save", function (e) {
 		var responseString = $(e.target).prev("#response").val();
-		var sourceQuestionId = $($(e.target).parents("[class^=answer-]")[0]).data("id");
+		if (!responseString) return;
+
+		var topLevel = $(e.target).data("targetid");
+		if (topLevel) {
+			this.sourceQuestionId = topLevel;
+			this.reloadPage = true;
+		} else {
+			this.sourceQuestionId =  $($(e.target).parents("[class^=answer-]")[0]).data("id");
+		}
 		$.ajax({
 			url: '/questions',
 			data: {
 				question: responseString,
-				source_question_id: sourceQuestionId
+				source_question_id: this.sourceQuestionId
 			},
-			context: sourceQuestionId,
+			context: this,
 			type: 'post',
 			dataType: 'json',
 			success: function (data) {
-				loadAnswer(this, true);
+				if (this.reloadPage)
+					location.reload();
+				else
+					loadAnswer(this.sourceQuestionId, true);
 			}
 		});
 	});

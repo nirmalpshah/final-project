@@ -7,7 +7,7 @@
 			<span class="user-info pull-right">Asked by <%= @question.user.displayname %></span>
 		</div>
 	</div>
-	<div class="answers-<%= @question.id %>">
+	<div class="answers-<%= @question.id %>" data-id=<%=@question.id%>>
 		<ul class="media-list">
 			<% @question.questions.each do |q| %>
 				<li class="answer-<%=q.id%> media" data-id=<%=q.id%>>
@@ -19,6 +19,13 @@
 				</li>
 			<% end %>
 		</ul>
+		<button type="button" class="btn btn-primary response-link">Post a response</button>
+		<form id="response-form" class="form-inline" style="display:none;" role="form">
+			<div id="response-data" class="form-group">
+				<input type="text" class="form-control" id="response" placeholder="Enter response here" >
+				<button type="button" data-targetid=<%=@question.id%> class="response-save btn btn-primary">Save</button> 
+			</div>
+		</form>
 	</div>
 </div>
 

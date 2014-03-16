@@ -1,7 +1,7 @@
 class QuestionsController < ApplicationController
 
 	def index
-		@questions = Question.all
+		@categories = Category.all
 	end
 
 	def show
@@ -23,8 +23,12 @@ class QuestionsController < ApplicationController
 			q.answer.source_question_id = params[:source_question_id]
 		end
 		if !params[:category].blank?
-			q.category = q.create_category
-			q.category.name = params[:category]
+			cat = Category.find_by(name: params[:category])
+			if cat != nil
+				q.category = cat
+			else
+				q.category = q.create_category(name: params[:category])
+			end
 		end
 		q.save
 

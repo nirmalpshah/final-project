@@ -7,11 +7,14 @@
 		</div>
 		<button type="button" class="new-question-link btn btn-primary">Submit</button>
 	</form>
-</div>
 
-<ul>
-	<% @questions.each do |q| %>
-		<li> <%= link_to q.question, question_path(q.id) %> </li>
+	<% @categories.each do |c| %>
+		<h3><%=c.name%></h3>
+		<ul>
+			<% c.questions.each do |q| %>
+				<li> <%= link_to q.question, question_path(q.id) %> </li>
+			<% end %>
+		</ul>
 	<% end %>
-</ul>
 
+</div>

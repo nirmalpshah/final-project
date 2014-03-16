@@ -63,17 +63,4 @@ $(function() {
 		selector: 'a[rel="tooltip"], [data-toggle="tooltip"]'
 	});
 
-	// new question
-	$(document.body).on("click", ".new-question-link", function (e) {
-		$.ajax({
-			url: '/questions',
-			data: {
-				question: $("#question").val(),
-				category: $("#category").val()
-			},
-			type: 'post'
-		});
-
-	});
-
 });

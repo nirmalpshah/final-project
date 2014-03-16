@@ -6,21 +6,27 @@ class QuestionsController < ApplicationController
 
 	def show
 		@question = Question.find_by id: params["id"]
+
+		respond_to do |format|
+			format.html
+			format.json { render :json => @question.to_json(:include => [:user, :questions]) }
+		end
 	end
 
 	def create
-		question = Question.new
-		q = params[:question]
-		user_id = session[:user_id]
-		type = params[:type]
+		# need to check if user has valid sessoin first
+		q = Question.new
+		q.question = params[:question]
+		q.user_id = session[:user_id]
+		q.answer = q.create_answer
+		q.answer.source_question_id = params[:source_question_id]
 
-		question.save
+		q.save
+
+		render :json => q.to_json
 
 	end
 	
-	#def new
-	#end
-
 	def update
 
 	end

@@ -9,4 +9,8 @@ class UsersController < ApplicationController
 		session[:user_id] = user.id
 	end
 
+	def new
+		render :layout => false
+	end
+
 end

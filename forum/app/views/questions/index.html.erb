@@ -1,5 +1,3 @@
-<%= @questions.length %>
-
 <ul>
 	<% @questions.each do |q| %>
 		<li> <%= link_to q.question, question_path(q.id) %> </li>

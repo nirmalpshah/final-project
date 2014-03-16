@@ -16,30 +16,44 @@
 						<h2>A better forum</h2>
 					</div>
 					<div class="col-md-5">
-						<!-- if user is not logged in -->
 						<div class="pull-right">
-							<input type="email" class="" id="login-username" placeholder="Email" >
-							<input type="password" class="password" id="login-password" placeholder="Password">
-							<button type="button" class="login-link btn btn-primary">Log in</button> or 
-							<button type="button" class="signup-link btn btn-link">Sign up</button> 
+							<!-- if user is not logged in -->
+							<form id="login-form" class="form-inline" <% if !@displayname.blank? %>style="display: none;"<% end %>  role="form">
+								<div id="login-data" class="form-group">
+									<input type="email" class="form-control" id="login-username" placeholder="Email" >
+									<input type="password" class="form-control password" id="login-password" placeholder="Password">
+								</div>
+								<button type="button" class="login-link btn btn-primary">Log in</button> or 
+								<a data-toggle="modal" href="/users/new" data-target="#signup-modal">Sign up</a> 
+							</form>
+							<!-- if user logged in -->
+							<div id="login-success" <% if @displayname.blank? %>style="display: none;"<% end %>>
+								Welcome, <span class="displayname"><%= @displayname %></span>
+								<button type="button" class="signout-link btn btn-link">Sign out</button>
+							</div>
 						</div>
-
-						<!-- else
-							Welcome, user
-							<button type="button" class="signout-link btn btn-link">Sign out</button>
-						-->
 					</div>
 				</div>
 			</div>
 
-		<!-- Log in modal -->
-		<div class="login-modal hidden modal">
-			<link class="button btn btn-info" id="login-button">
-		</div>
-
 		<!-- Sign up modal -->
-		<div class="signup-modal hidden modal">
-
+		<div id="signup-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-sm">
+				<div class="modal-content">
+					<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4>
+							Sign up!
+						</h4>
+					</div>
+					<div class="modal-body">
+						<div class="te"></div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary">Create Account</button>
+					</div>
+				</div>
+			</div>
 		</div>
 
 		<%= yield %>

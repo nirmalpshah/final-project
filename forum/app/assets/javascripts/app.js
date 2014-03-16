@@ -69,8 +69,8 @@ $(function() {
 			url: "/users",
 			type: "post",
 			data: {
-				name: username.val(),
-				email: displayname.val(),
+				name: displayname.val(),
+				email: username.val(),
 				password: password1.val(),
 				password2: password2.val()
 			},

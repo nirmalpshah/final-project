@@ -1,12 +1,110 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
-#
-
-Question.create([
-								{ question: 'how many licks to the center of a tootsie pop?' }
+User.create!([
+  {username: "nirmalpshah@gmail.com", displayname: "Nirmal Shah", password: "pass", password_confirmation: "pass"},
+  {username: "hp@hogwartz.com", displayname: "Harry Potter", password: "pass", password_confirmation: "pass"},
+  {username: "hgranger@hogwartz.com", displayname: "Hermione Granger", password: "pass", password_confirmation: "pass"}
+])
+Category.create!([
+  {name: "Auto"},
+  {name: "Magic"},
+  {name: "Health"}
+])
+Question.create!([
+  {question: "My car won't start", user_id: 1, type: nil, category_id: 1},
+  {question: "Do any of the lights turn on?", user_id: 2, type: nil, category_id: nil},
+  {question: "Yes, my lights all work", user_id: 1, type: nil, category_id: nil},
+  {question: "Is the engine cranking when you turn the key?", user_id: 2, type: nil, category_id: nil},
+  {question: "No, my lights, auto-door locks, etc are all not working", user_id: 1, type: nil, category_id: nil},
+  {question: "Try Jump starting the car", user_id: 2, type: nil, category_id: nil},
+  {question: "That didn't work", user_id: 1, type: nil, category_id: nil},
+  {question: "Take the car to a mechanic", user_id: 2, type: nil, category_id: nil},
+  {question: "Try replacing the battery", user_id: 2, type: nil, category_id: nil},
+  {question: "Yes", user_id: 1, type: nil, category_id: nil},
+  {question: "Is there gas in the car?", user_id: 2, type: nil, category_id: nil},
+  {question: "there wasn't! now it works, thanks!", user_id: 1, type: nil, category_id: nil},
+  {question: "What's the best way to get a scratch out?", user_id: 2, type: nil, category_id: 1},
+  {question: "How old is the paint job?", user_id: 1, type: nil, category_id: nil},
+  {question: "From when I bought the car, over 5 years", user_id: 2, type: nil, category_id: nil},
+  {question: "Just get a new paint job", user_id: 1, type: nil, category_id: nil},
+  {question: "Less than 5 years ago", user_id: 1, type: nil, category_id: nil},
+  {question: "You can buff it out", user_id: 1, type: nil, category_id: nil},
+  {question: "how?", user_id: 2, type: nil, category_id: nil},
+  {question: "Try these steps: http://www.wikihow.com/Remove-Scratches-from-Car", user_id: 1, type: nil, category_id: nil},
+  {question: "How deep is the scratch?", user_id: 1, type: nil, category_id: nil},
+  {question: "Deep, there is a dent too", user_id: 2, type: nil, category_id: nil},
+  {question: "You're screwed, go get a new car", user_id: 1, type: nil, category_id: nil},
+  {question: "You're fine, just use suction to get the dent out", user_id: 1, type: nil, category_id: nil},
+  {question: "How to tackle a mountain troll", user_id: 3, type: nil, category_id: 2},
+  {question: "I'm just asking for the benefit of the community, I did this when I was, like, 10", user_id: 3, type: nil, category_id: nil},
+  {question: "Ok, how did you do it?", user_id: 1, type: nil, category_id: nil},
+  {question: "Well, my friends and I knocked it out with its own club", user_id: 3, type: nil, category_id: nil},
+  {question: "what's a good spell for that?", user_id: 1, type: nil, category_id: nil},
+  {question: "Try \"wingardium leviosa\"", user_id: 3, type: nil, category_id: nil},
+  {question: "le-vi-oh-saah?", user_id: 1, type: nil, category_id: nil},
+  {question: "le-vi-oh-sah, not le-vi-oh-saaaahhhh", user_id: 3, type: nil, category_id: nil},
+  {question: "Don't, just run", user_id: 1, type: nil, category_id: nil},
+  {question: "That doesn't answer the question", user_id: 3, type: nil, category_id: nil},
+  {question: "but it is the best adivce", user_id: 1, type: nil, category_id: nil},
+  {question: "My stomach hurts", user_id: 1, type: nil, category_id: 3},
+  {question: "How long has it been hurting?", user_id: 3, type: nil, category_id: nil},
+  {question: "Just today", user_id: 3, type: nil, category_id: nil},
+  {question: "For more than a week", user_id: 3, type: nil, category_id: nil},
+  {question: "Maybe you should see a doctor", user_id: 3, type: nil, category_id: nil},
+  {question: "What have you eaten?", user_id: 3, type: nil, category_id: nil},
+  {question: "Nothing special, just my usual fare", user_id: 3, type: nil, category_id: nil},
+  {question: "An entire package of cheese sticks", user_id: 3, type: nil, category_id: nil},
+  {question: "Some seafood in china-town", user_id: 3, type: nil, category_id: nil},
+  {question: "Well there you go...", user_id: 3, type: nil, category_id: nil},
+  {question: "Just wait it out... maybe sit on the toilet", user_id: 3, type: nil, category_id: nil},
+  {question: "Uh oh... you're in for a fun night...", user_id: 3, type: nil, category_id: nil},
+  {question: "It's fine... Just call them and ask if anyone else has gotten sick", user_id: 3, type: nil, category_id: nil},
+  {question: "For a few months, off and on", user_id: 1, type: nil, category_id: nil},
+  {question: "See a doctor. Now.", user_id: 3, type: nil, category_id: nil}
+])
+Answer.create!([
+  {source_question_id: 1, destination_question_id: 2, label: nil, user_id: nil},
+  {source_question_id: 2, destination_question_id: 3, label: nil, user_id: nil},
+  {source_question_id: 3, destination_question_id: 4, label: nil, user_id: nil},
+  {source_question_id: 2, destination_question_id: 5, label: nil, user_id: nil},
+  {source_question_id: 5, destination_question_id: 6, label: nil, user_id: nil},
+  {source_question_id: 6, destination_question_id: 7, label: nil, user_id: nil},
+  {source_question_id: 6, destination_question_id: 8, label: nil, user_id: nil},
+  {source_question_id: 7, destination_question_id: 9, label: nil, user_id: nil},
+  {source_question_id: 4, destination_question_id: 10, label: nil, user_id: nil},
+  {source_question_id: 10, destination_question_id: 11, label: nil, user_id: nil},
+  {source_question_id: 11, destination_question_id: 12, label: nil, user_id: nil},
+  {source_question_id: 13, destination_question_id: 14, label: nil, user_id: nil},
+  {source_question_id: 14, destination_question_id: 15, label: nil, user_id: nil},
+  {source_question_id: 15, destination_question_id: 16, label: nil, user_id: nil},
+  {source_question_id: 14, destination_question_id: 17, label: nil, user_id: nil},
+  {source_question_id: 17, destination_question_id: 18, label: nil, user_id: nil},
+  {source_question_id: 18, destination_question_id: 19, label: nil, user_id: nil},
+  {source_question_id: 19, destination_question_id: 20, label: nil, user_id: nil},
+  {source_question_id: 13, destination_question_id: 21, label: nil, user_id: nil},
+  {source_question_id: 21, destination_question_id: 22, label: nil, user_id: nil},
+  {source_question_id: 22, destination_question_id: 23, label: nil, user_id: nil},
+  {source_question_id: 22, destination_question_id: 24, label: nil, user_id: nil},
+  {source_question_id: 25, destination_question_id: 26, label: nil, user_id: nil},
+  {source_question_id: 26, destination_question_id: 27, label: nil, user_id: nil},
+  {source_question_id: 26, destination_question_id: 28, label: nil, user_id: nil},
+  {source_question_id: 28, destination_question_id: 29, label: nil, user_id: nil},
+  {source_question_id: 29, destination_question_id: 30, label: nil, user_id: nil},
+  {source_question_id: 30, destination_question_id: 31, label: nil, user_id: nil},
+  {source_question_id: 30, destination_question_id: 32, label: nil, user_id: nil},
+  {source_question_id: 25, destination_question_id: 33, label: nil, user_id: nil},
+  {source_question_id: 33, destination_question_id: 34, label: nil, user_id: nil},
+  {source_question_id: 34, destination_question_id: 35, label: nil, user_id: nil},
+  {source_question_id: 36, destination_question_id: 37, label: nil, user_id: nil},
+  {source_question_id: 37, destination_question_id: 38, label: nil, user_id: nil},
+  {source_question_id: 37, destination_question_id: 39, label: nil, user_id: nil},
+  {source_question_id: 39, destination_question_id: 40, label: nil, user_id: nil},
+  {source_question_id: 38, destination_question_id: 41, label: nil, user_id: nil},
+  {source_question_id: 41, destination_question_id: 42, label: nil, user_id: nil},
+  {source_question_id: 41, destination_question_id: 43, label: nil, user_id: nil},
+  {source_question_id: 41, destination_question_id: 44, label: nil, user_id: nil},
+  {source_question_id: 43, destination_question_id: 45, label: nil, user_id: nil},
+  {source_question_id: 42, destination_question_id: 46, label: nil, user_id: nil},
+  {source_question_id: 44, destination_question_id: 47, label: nil, user_id: nil},
+  {source_question_id: 44, destination_question_id: 48, label: nil, user_id: nil},
+  {source_question_id: 37, destination_question_id: 49, label: nil, user_id: nil},
+  {source_question_id: 49, destination_question_id: 50, label: nil, user_id: nil}
 ])

@@ -18,6 +18,7 @@ $(function() {
 						$("#login-form").hide();
 						$(".displayname").html(data.displayname);
 						$("#login-success").show();
+						location.reload();
 					} else if (data.error == "email") {
 						$("#login-username")
 							.attr("placeholder", "Unknown email")
@@ -41,10 +42,38 @@ $(function() {
 			url: "/logout",
 			type: 'get',
 			success: function (data) {
-					$("#login-form").show();
-					$("#login-success").hide();
+				location.reload();
 			}
 		});
 	});
-	
+
+	// Disable form submit on enter
+	$("form").bind("keypress", function(e) {
+		if (e.keyCode == 13) {
+			return false;
+		}
+	});
+
+	// Opt-in to bootstrap popups
+	$('body').popover({
+		selector: '[data-toggle="popover"]'
+	});
+
+	$('body').tooltip({
+		selector: 'a[rel="tooltip"], [data-toggle="tooltip"]'
+	});
+
+	// new question
+	$(document.body).on("click", ".new-question-link", function (e) {
+		$.ajax({
+			url: '/questions',
+			data: {
+				question: $("#question").val(),
+				category: $("#category").val()
+			},
+			type: 'post'
+		});
+
+	});
+
 });

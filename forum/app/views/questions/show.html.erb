@@ -3,18 +3,18 @@
 <div class="container-fluid">
 	<div class="row top-question" data-id="<%= @question.id %>">
 		<div class="col-md-6">
-			<h4><%= @question.question %></h4>
-		</div>
-		<div class="col-md-7">
-			<p class="pull-right">Asked by <%= @question.user.displayname %></p>
+			<h3><%= @question.question %></h3>
+			<span class="user-info pull-right">Asked by <%= @question.user.displayname %></span>
 		</div>
 	</div>
 	<div class="answers-<%= @question.id %>">
 		<ul class="media-list">
 			<% @question.questions.each do |q| %>
 				<li class="answer-<%=q.id%> media" data-id=<%=q.id%>>
-				<div class="well well-sm media-body">
-					<h5 class="question-heading media-heading" data-id=<%=q.id%>><%=q.question%></h5>
+				<div class="media-body">
+					<h4 class="question-heading media-heading" data-id=<%=q.id%>>
+						<i class="fa fa-chevron-right fa-rotate-90"></i><%=q.question%>
+					</h4>
 				</div>
 				</li>
 			<% end %>
@@ -24,20 +24,21 @@
 
 <script type="text/template" id="question-template">
 	<div class="question-body" style="display:none;" >
-		<p class="pull-right">Posted by {{=user.displayname}}</p>
 		<div class="container-fluid answers-{{=id}}"> 
 			<ul class="media-list">
 				{{ _.each (questions, function (q) { }}
 					<li class="answer-{{=q.id}} media" data-id={{=q.id}}>
-					<div class="well well-sm media-body">
-						<h5 class="question-heading media-heading" data-id={{=q.id}}>{{=q.question}}</h5>
+					<div class="media-body">
+						<h4 class="question-heading media-heading" data-id={{=q.id}}>
+							<i class="fa fa-chevron-right"></i> {{=q.question}}
+						</h4>
 					</div>
 					</li>
 					{{ }); }}
 				{{ if (!questions.length) print("No responses yet"); }}
 			</ul>
 		</div>
-		<a href="#" class="response-link">Post a response</a>
+		<button type="button" class="btn btn-primary response-link">Post a response</button>
 		<form id="response-form" class="form-inline" style="display:none;" role="form">
 			<div id="response-data" class="form-group">
 				<input type="text" class="form-control" id="response" placeholder="Enter response here" >

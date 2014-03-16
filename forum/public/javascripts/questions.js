@@ -14,12 +14,13 @@ $(function() {
 			success: function (data) {
 				var questionHtml = _.template($("#question-template").html(), data);
 				var $answer = $(".answer-" + answerId + " .question-heading");
+				var $next = $answer.next();
 				if (!reload) {
 					$answer.after(questionHtml);
 					$answer.next().show(500);
 				} else {
-					$answer.next().hide(250).replaceWith(questionHtml);
-					$answer.next().show(250);
+					$next.hide(250).replaceWith(questionHtml);
+					$answer.next().show(500);
 				}
 			}
 		});
@@ -36,8 +37,10 @@ $(function() {
 		var $target = $(e.target);
 		var $next = $target.next();
 		if ($next.length && $next.is(':visible')) {
+			$target.find("i").removeClass("fa-rotate-90");
 			$next.hide(500);
 		} else {
+			$target.find("i").addClass("fa-rotate-90");
 			if ($next.length) {
 				$next.show(500);
 			} else {

@@ -7,4 +7,6 @@ class Question < ActiveRecord::Base
 	has_one :answer, :class_name => 'Answer', :foreign_key => 'destination_question_id'
 	has_one :answer_to, through: :answer, source: 'source_question'
 
+	has_one :category
+
 end

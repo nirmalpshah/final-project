@@ -1,5 +1,17 @@
+<%= javascript_include_tag "questions_index.js" %>
+<div class="container-fluid">
+	<form id="new-question-form" class="form-inline" <% if @displayname.blank? %>style="display: none;"<% end %>  role="form">
+		<div id="new-question-data" class="form-group">
+			<input type="text" class="form-control" id="question" placeholder="Submit a new question" >
+			<input type="text" class="form-control" id="category" placeholder="Enter a category">
+		</div>
+		<button type="button" class="new-question-link btn btn-primary">Submit</button>
+	</form>
+</div>
+
 <ul>
 	<% @questions.each do |q| %>
 		<li> <%= link_to q.question, question_path(q.id) %> </li>
 	<% end %>
 </ul>
+

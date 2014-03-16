@@ -18,15 +18,22 @@ class QuestionsController < ApplicationController
 		q = Question.new
 		q.question = params[:question]
 		q.user_id = session[:user_id]
-		q.answer = q.create_answer
-		q.answer.source_question_id = params[:source_question_id]
-
+		if !params[:source_question_id].blank?
+			q.answer = q.create_answer
+			q.answer.source_question_id = params[:source_question_id]
+		end
+		if !params[:category].blank?
+			q.category = q.create_category
+			q.category.name = params[:category]
+		end
 		q.save
 
-		render :json => q.to_json
-
+		respond_to do |format|
+			format.html { redirect_to root_path }
+			format.json { render :json => q.to_json }
+		end
 	end
-	
+
 	def update
 
 	end

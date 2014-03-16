@@ -14,7 +14,6 @@ class QuestionsController < ApplicationController
 	end
 
 	def create
-		# need to check if user has valid sessoin first
 		q = Question.new
 		q.question = params[:question]
 		q.user_id = session[:user_id]

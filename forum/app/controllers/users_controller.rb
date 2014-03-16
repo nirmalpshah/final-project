@@ -5,8 +5,13 @@ class UsersController < ApplicationController
 		user.displayname = params[:name]
 		user.username = params[:email]
 		user.password = params[:password]
-		user.save
+		user.password_confirmation = params[:password2]
+		user.save!
 		session[:user_id] = user.id
+
+		respond_to do |format|
+			format.json { render :json => {success: true} }
+		end
 	end
 
 	def new
